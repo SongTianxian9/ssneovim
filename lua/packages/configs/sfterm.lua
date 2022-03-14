@@ -1,7 +1,7 @@
 require'FTerm'.setup({
 	ft = 'FTerm',
 	cmd = os.getenv('SHELL'),
-	border = 'double',
+	border = 'single',
 	auto_close = false,
 	hl = 'Normal',
 	-- Transparency of the floating window. See `:h winblend`
@@ -33,7 +33,20 @@ map('t', '<M-f>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 map('t', '<M-e>', '<C-\\><C-n><CMD>lua require("FTerm").exit()<CR>', opts)
 map('t', '<M-c>', '<C-\\><C-n><CMD>lua require("FTerm").close()<CR>', opts)
 
-map('n', '<M-r>', '<CMD>lua require("FTerm").run({"gcc -Wall -Werror -pedantic -std=c89 ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]," -o ", vim.fn.expand("%:p:r"),  " && ", vim.fn.expand("%:p:r") })<CR>', opts)
+-- if vim.o.filetype == 'c' then
+	map('n', '<M-c>', '<CMD>lua require("FTerm").run({"gcc -Wall -Werror -pedantic -std=c89 ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]," -o ", vim.fn.expand("%:p:r"),  " && ", vim.fn.expand("%:p:r") })<CR>', opts)
+-- elseif vim.o.filetype == 'java' then
+	map('n', '<M-j>', '<CMD>lua require("FTerm").run({"java ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]})<CR>', opts)
+-- else
+	-- print("不支持的文件类型")
+-- end
+-- vim.api.nvim_create_autogroup("run")
+-- vim.cmd[[
+-- 	autocmd FileType c nnoremap <buffer> <M-r> :lua require("FTerm").run({"gcc -Wall -Werror -pedantic -std=c89 ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]," -o ", vim.fn.expand("%:p:r"),  " && ", vim.fn.expand("%:p:r") })<CR>
+-- 	autocmd FileType java nnoremap <buffer> <M-r> :lua require("FTerm").run({"java ", vim.fn.expand("%")})<CR>
+-- augroup END
+-- ]]
+
 
 local fterm = require("FTerm")
 

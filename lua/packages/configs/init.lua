@@ -253,7 +253,6 @@ return packer.startup(function(use)--{{{
         }
 
         --}}}
-	--
         -- }}}
 
         -- UI{{{
@@ -296,7 +295,7 @@ return packer.startup(function(use)--{{{
                         sections = {
                                 lualine_a = {'mode'},
                                 lualine_b = {'branch', 'diff', 'diagnostics'},
-                                lualine_c = {"%F", --[[ {function() return require('lsp-status').status() end} ,]] },
+                                lualine_c = {'filename', --[[ {function() return require('lsp-status').status() end} ,]] },
                                 lualine_x = { --[[ function()
 					if #vim.lsp.buf_get_clients() > 0 then
 						return require('lsp-status').status()
@@ -476,45 +475,6 @@ return packer.startup(function(use)--{{{
                 end,
         }--}}}
 
-	use {
-		'luochen1990/rainbow',
-		config = function ()
-			vim.cmd[[ 
-				let g:rainbow_conf = {
-				\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-				\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-				\	'guis': [''],
-				\	'cterms': [''],
-				\	'operators': '_,_',
-				\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-				\	'separately': {
-				\		'*': {},
-				\		'markdown': {
-				\			'parentheses_options': 'containedin=markdownCode contained',
-				\		},
-				\		'lisp': {
-				\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-				\		},
-				\		'haskell': {
-				\			'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
-				\		},
-				\		'vim': {
-				\			'parentheses_options': 'containedin=vimFuncBody',
-				\		},
-				\		'perl': {
-				\			'syn_name_prefix': 'perlBlockFoldRainbow',
-				\		},
-				\		'stylus': {
-				\			'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
-				\		},
-				\		'css': 0,
-				\	}
-				\}
-				let g:rainbow_active = 1
-			]]
-		end
-	}
-
         --}}}
 
         -- 面板{{{
@@ -624,8 +584,6 @@ return packer.startup(function(use)--{{{
 							["nvim"]    = vim.fn.expand("~/.config/nvim"),
 							["config"]    = vim.fn.expand("~/.config"),
 							["tcpl"] = vim.fn.expand("~/learn/tcpl"),
-							["csapp"] = vim.fn.expand("~/learn/csapp"),
-							["JavaCore"] = vim.fn.expand("~/learn/JavaCore"),
 							-- ["wiki"]    = "/home/my_username/wiki"
 						}
 					},
@@ -666,7 +624,7 @@ return packer.startup(function(use)--{{{
         -- 增强{{{
         use {
                 'phaazon/hop.nvim',--{{{
-                -- branch = 'v1.3', -- optional but strongly recommended
+                -- branch = 'v1.2', -- optional but strongly recommended
                 -- opt = true,
                 -- cmd = {"HopWord", "HopPattern", "HopChar1", "HopChar2", "HopLine", "HopLineStart"},
                 config = function()

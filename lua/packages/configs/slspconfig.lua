@@ -210,13 +210,11 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 require'lspconfig'.sumneko_lua.setup {
-	server = {
-		capabilities = capabilities,
-                on_attach = on_attach,
-                flags = {
-                -- This will be the default in neovim 0.7+
-                debounce_text_changes = 150,
-                }
+	capabilities = capabilities,
+	on_attach = on_attach,
+	flags = {
+	-- This will be the default in neovim 0.7+
+	debounce_text_changes = 150,
 	},
     cmd = {sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
@@ -252,4 +250,18 @@ require("clangd_extensions").setup {
 			debounce_text_changes = 150,
                 }
 	},
+}
+
+
+require'lspconfig'.jdtls.setup{
+	capabilities = capabilities,
+	on_attach = on_attach,
+	flags = {
+	-- This will be the default in neovim 0.7+
+	debounce_text_changes = 150,
+	},
+	cmd = { 'jdtls' },
+	root_dir = function(fname)
+		return require'lspconfig'.util.root_pattern('pom.xml', 'gradle.build', '.git')(fname) or vim.fn.getcwd()
+	end
 }
