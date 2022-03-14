@@ -35,8 +35,10 @@ o.whichwrap = "b,s,<,>,h,l"
 o.completeopt = {"menu", "menuone", "noselect"}
 o.mouse = "a"
 o.shortmess:append({ I = true })
+o.clipboard:append({ unnamedplus = true })
 vim.cmd[[
 set guifont=JetBrainsMono\ Nerd\ Font:h12
+set clipboard+=unnamedplus
 ]]
 
 
