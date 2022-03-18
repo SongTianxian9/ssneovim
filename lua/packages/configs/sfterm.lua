@@ -34,9 +34,9 @@ map('t', '<M-e>', '<C-\\><C-n><CMD>lua require("FTerm").exit()<CR>', opts)
 map('t', '<M-c>', '<C-\\><C-n><CMD>lua require("FTerm").close()<CR>', opts)
 
 -- if vim.o.filetype == 'c' then
-	map('n', '<M-c>', '<CMD>lua require("FTerm").run({"gcc -Wall -Werror -pedantic -std=c89 ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]," -o ", vim.fn.expand("%:p:r"),  " && ", vim.fn.expand("%:p:r") })<CR>', opts)
+	map('n', '<leader>rc', '<CMD>lua require("FTerm").run({"gcc -Wall -Werror -pedantic -std=c89 ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]," -o ", vim.fn.expand("%:p:r"),  " && ", vim.fn.expand("%:p:r") })<CR>', opts)
 -- elseif vim.o.filetype == 'java' then
-	map('n', '<M-j>', '<CMD>lua require("FTerm").run({"java ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]})<CR>', opts)
+	map('n', '<leader>rj', '<CMD>lua require("FTerm").run({"java ", vim.api.nvim_buf_get_name(0)--[[ vim.fn.expand("%:p") ]]})<CR>', opts)
 -- else
 	-- print("不支持的文件类型")
 -- end

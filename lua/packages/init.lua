@@ -754,6 +754,10 @@ return packer.startup(function(use)--{{{
                 end
         }--}}}
 
+	use(
+		"nathom/filetype.nvim"
+	)
+
 
 	-- }}}
 
